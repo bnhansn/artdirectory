@@ -57,6 +57,16 @@
    src: url('/wp-content/plugins/artdirectory/assets/Fonts/OpenSans-Bold.ttf') format('truetype');
       }
 
+/* Bootstrap fixes */
+
+.container {
+  max-width: 100% !important;
+}
+
+.modal {
+  top: 50px;
+  bottom: 50px;
+}
 
 /* Media Queries */
 @media (max-width: 600px) {
@@ -156,15 +166,15 @@ li.main_field{
 
  .artist_post a{
    font-size: 18px;
-   display: block;
  }
- 
+
  .artist_post > img a{
    border: solid 10px white;
  }
 
  .artist-thu-title{
-   height: 50px;
+   text-align: left;
+   margin-bottom: 1rem;
  }
 
  .search_container{
@@ -189,10 +199,6 @@ li.main_field{
 
  .artist_modal_large{
    width: 70%;
- }
-
- .forward-page, .back-page{
-   padding-top: 70%;
  }
 
  @keyframes slidy {

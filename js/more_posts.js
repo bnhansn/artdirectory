@@ -255,7 +255,7 @@ function build_artist(artist){
 	data[artist[0]] = artist[1]
 	data[artist[0]+"gallery"] = artist[2]
 	build_artist_str = ""
-	build_artist_str += "<div class='col-md-3 artist_post'><a data-toggle='modal' data-target='#artist' onclick='modal_build("+ "&quot;" + artist[0] + "&quot;" + ")'>"
+	build_artist_str += "<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12' style='text-align:left'><a data-toggle='modal' data-target='#artist' class='artist_post_content' onclick='modal_build("+ "&quot;" + artist[0] + "&quot;" + ")'>"
 	if(artist[1]['thumb_nail_image'] && artist[1]['thumb_nail_image']['sizes']['medium']){
 		build_artist_str += "<img src='" + artist[1]['thumb_nail_image']['sizes']['medium'] + "'/>"
 	}

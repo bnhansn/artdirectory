@@ -51,7 +51,7 @@
 <div class="container">
   <div class="row artists_query">
   <div class="col-md-1">
-    <img class="back-page" src="/wp-content/plugins/artdirectory/assets/arrowlarge_left.png"/>
+    <img class="back-page" style="cursor:pointer;margin:20px 0" src="/wp-content/plugins/artdirectory/assets/arrowlarge_left.png"/>
   </div>
   <div class="col-md-10">
   <div class="row artists">
@@ -59,7 +59,7 @@
 </div>
 </div>
 <div class="col-md-1">
-    <img class="forward-page" src="/wp-content/plugins/artdirectory/assets/arrowlarge_right.png"/>
+    <img class="forward-page" style="cursor:pointer;margin:20px 0" src="/wp-content/plugins/artdirectory/assets/arrowlarge_right.png"/>
 </div>
 </div>
 </div>
@@ -75,62 +75,42 @@
 
       <div class="modal-body artist_modal">
         <div class="row">
-
           <div class="col-md-4 artist-gallery col-md-push-8">
             <div class="art-gal-itself" >
             </div>
-
             <!-- Controls -->
             <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                <img class="icon-next" src="/wp-content/plugins/artdirectory/assets/arrow_modal1_left.png"/>
+              <img class="icon-next" src="/wp-content/plugins/artdirectory/assets/arrow_modal1_left.png"/>
             </a>
             <a class="right carousel-control" href="#myCarousel" data-slide="next">
               <img class="icon-next" src="/wp-content/plugins/artdirectory/assets/arrow_modal1_right.png"/>
             </a>
-        </div>
-
+          </div>
           <div class="col-md-8 artist-info col-md-pull-4">
             <h3 class="artist-name"></h3>
             <div class="row">
               <div class="col-md-6">
                 <div class="row">
                   <div class="col-md-12">
-                <div class="artist-contact">
-                  <h4>Contact Information</h4>
-                  <div class="artist-phone"></div>
-                  <div class="artist-email"></div>
-                  <div class="artist-web"></div>
-                  <div class="artist-address"></div>
-                </div>
-              </div>
-              </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <h4>Artist Statment</h4>
-                <div class="artist-statement">
+                    <div class="artist-contact">
+                      <h4>Contact Information</h4>
+                      <div class="artist-phone"></div>
+                      <div class="artist-email"></div>
+                      <div class="artist-web"></div>
+                      <div class="artist-address"></div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-
-          <div class="row">
-            <div class="col-md-12 social-icons">
-
-          </div>
         </div>
-
-        <div class="row">
-          <div class="container">
-          <div class='col-md-12'>
-              <div class="map_contains">
-              </div>
-          </div>
-          </div>
+        <h4>Artist Statment</h4>
+        <div class="artist-statement">
         </div>
+        <div class="social-icons"></div>
+        <div class="map_contains"></div>
       </div>
-
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>

@@ -1,5 +1,3 @@
-// TODO Clean up Code
-
 var data = {'main_term' : null,
         'second_term' : null, "offset" : 0, "search_term" : 0, "modal_open": null, "mobile": false};
 
@@ -130,6 +128,30 @@ function get_pagination_offset(){
 
 /* These are helper functions */
 
+function buildDescGallery(images) {
+  var container = "<div>";
+  images.map(function (image) {
+    var item = "<div id='" + image.title + "' class='art-gal-desc-item'>";
+    var imgTitle = image.title.length ? "<div>" + "<b class='art-gal-desc-item-title'>Title: </b>" + "<span>" + image.title + "</span>" + "</div>" : "<div />";
+    var imgCaption = image.caption.length ? "<div>" + "<b class='art-gal-desc-item-title'>Medium: </b>" + "<span>" + image.caption + "</span>" + "</div>" : "<div />";
+    var imgDesc = image.description.length ? "<div>" + "<b class='art-gal-desc-item-title'>Size: </b>" + "<span>" + image.description + "</span>" + "</div>" : "<div />";
+    item = item + imgTitle + imgCaption + imgDesc + "</div>";
+    container += item;
+  });
+  container += "</div>";
+  return container;
+}
+
+function buildGalleryDots(number) {
+  var list = "<ul class='gallery-dot-list'>";
+  Array(number).fill().map(function (_, i) {
+    var dot = "<li class='gallery-dot' />";
+    list += dot;
+  });
+  list += "</ul>";
+  return list;
+}
+
 function modal_build(artist){
 		data["modal_open"] = artist;
 		artist_data = data[artist]
@@ -148,8 +170,14 @@ function modal_build(artist){
 		jQuery('.artist-zip').html(artist_data['zip'])
 		jQuery('.category-modal').html(artist_data['category'])
 		if(artist_data['thumb_nail_image']){
-					jQuery('.art-gal-itself').html(build_gallery(artist));
-					slide_show()
+			jQuery('.art-gal-itself').html(build_gallery(artist));
+      if (artist_data.image_gallery) {
+        jQuery('.art-gal-description').html(buildDescGallery(artist_data.image_gallery));
+        jQuery('.art-gal-dots').html(buildGalleryDots(artist_data.image_gallery.length));
+      } else {
+        jQuery('.art-gal-description').html("<div />");
+      }
+			slide_show()
 		} else{
 			jQuery('.art-gal-itself').html("No Gallery Available");
 		}
@@ -201,7 +229,7 @@ function slide_show(){
 			jQuery('.active-gal').toggleClass("active-gal")
 			jQuery(jQuery( ".art-gal-itself .gallery-item" )[index - 1]).toggleClass("active-gal")
 		}
-		gal_ui_clean()
+		resetArrowsAndDesc()
 	});
 	jQuery('.right').click(function(){
 		index = jQuery( ".art-gal-itself .gallery-item" ).index( jQuery('.active-gal') );
@@ -209,16 +237,23 @@ function slide_show(){
 			jQuery('.active-gal').toggleClass("active-gal")
 			jQuery(jQuery( ".art-gal-itself .gallery-item" )[index + 1]).toggleClass("active-gal")
 		}
-		gal_ui_clean()
+		resetArrowsAndDesc()
 	});
-	gal_ui_clean()
+	resetArrowsAndDesc()
 }
 
-function gal_ui_clean(){
+function resetArrowsAndDesc(){
+  jQuery('.art-gal-desc-item').hide();
+  jQuery('.gallery-dot').removeClass('active');
+  var activeImageTitle = jQuery('.active-gal').first().find('a').first().data('title');
+  if (activeImageTitle) {
+    document.getElementById(activeImageTitle).setAttribute('style', 'display:block');
+  }
 	index = jQuery( ".art-gal-itself .gallery-item" ).index( jQuery('.active-gal') );
-	if(index === 0){
+  jQuery('.gallery-dot:nth-child(' + (index + 1) + ')').addClass('active');
+	if(index === 0 || index === -1){
 		jQuery('.left').hide()
-	}else {
+	}else{
 		jQuery('.left').show()
 	}
 	if(jQuery(jQuery( ".art-gal-itself .gallery-item" )[index+1]).length){
@@ -227,11 +262,6 @@ function gal_ui_clean(){
 		jQuery('.right').hide()
 	}
 }
-
-
-
-
-
 
 function build_gallery(artist){
 	return data[artist+"gallery"]

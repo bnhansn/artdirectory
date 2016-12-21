@@ -157,49 +157,35 @@ li.main_field{
 .artists_query{
   margin-top: 3%;
 }
- .artist_post,.artist_post a {
-   text-align: left;
-   font-family: OpenSans-Light;
-   margin-bottom: 2%;
-   color: #33353d;
- }
 
- .artist_post a{
-   font-size: 18px;
- }
+.artist-thu-title{
+ text-align: left;
+ margin-bottom: 1rem;
+}
 
- .artist_post > img a{
-   border: solid 10px white;
- }
+.search_container{
+ float:right;
+ background: white;
+ border: .5px solid;
+ border-color: #333333;
+ border-radius: 1px;
+ padding-left: 5px;
+ padding-right: 5px;
 
- .artist-thu-title{
-   text-align: left;
-   margin-bottom: 1rem;
- }
+}
+#search, #search:focus{
+ background: none;
+ border: none;
+ outline: none
+}
 
- .search_container{
-   float:right;
-   background: white;
-   border: .5px solid;
-   border-color: #333333;
-   border-radius: 1px;
-   padding-left: 5px;
-   padding-right: 5px;
+.search-icon{
+ color: #725871;
+}
 
- }
- #search, #search:focus{
-   background: none;
-   border: none;
-   outline: none
- }
-
- .search-icon{
-   color: #725871;
- }
-
- .artist_modal_large{
-   width: 70%;
- }
+.artist_modal_large{
+ width: 70%;
+}
 
  @keyframes slidy {
 0% { left: 0%; }
@@ -224,6 +210,56 @@ div.artist-gallery figure {
   text-align: left;
   font-size: 0;
   transition: : slidy;
+}
+
+.art-gal-container {
+  position: relative;
+}
+
+.art-gal-container::after {
+  display: table;
+  content: "";
+  clear: both;
+}
+
+.art-gal-description {
+  margin-left: 9%;
+}
+
+.art-gal-desc-item {
+  display: none;
+}
+
+.art-gal-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 40px;
+  transform: translateX(-50%);
+}
+
+.gallery-dot-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.gallery-dot {
+  width: 10px;
+  height: 10px;
+  margin: 4px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background: transparent;
+}
+
+.gallery-dot.active {
+  background: #fff;
+}
+
+.carousel-control {
+  bottom: 10px !important;
 }
 
 .gallery-item.active-gal{
@@ -262,20 +298,12 @@ div.artist-gallery figure {
 }
 
 .carousel-control.right{
-  background: none;
   margin-right: 9%;
 }
+
 .carousel-control.left{
-  background: none;
   margin-left: 9%;
 }
-
-.modal-header{
-  padding: 20px;
-  padding-bottom: 7px;
-  padding-bottom: 7px;
-}
-
 
 .social-icons{
   margin-top: 3%;

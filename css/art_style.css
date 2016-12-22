@@ -223,6 +223,7 @@ div.artist-gallery figure {
 }
 
 .art-gal-description {
+  min-height: 60px;
   margin-left: 9%;
 }
 
@@ -362,4 +363,10 @@ div.artist-gallery figure {
 #display{
   text-align: left;
   margin-bottom: 7px;
+}
+
+.artist-hours-header,
+.artist-classes-header {
+  font-weight: bold;
+  font-size: 22px;
 }

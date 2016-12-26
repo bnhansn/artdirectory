@@ -1,5 +1,11 @@
-var data = {'main_term' : null,
-        'second_term' : null, "offset" : 0, "search_term" : 0, "modal_open": null, "mobile": false};
+var data = {
+  main_term: null,
+  second_term: null,
+  offset: 0,
+  search_term: 0,
+  modal_open: null,
+  mobile: false
+};
 
 var main_query = function main_query(main_term_cat, second_term_cat, offset){
                         console.log(main_term_cat, second_term_cat);
@@ -125,17 +131,13 @@ function get_pagination_offset(){
   });
 }
 
-
-/* These are helper functions */
-
 function buildDescGallery(images) {
   var container = "<div>";
   images.map(function (image) {
     var item = "<div id='" + image.title + "' class='art-gal-desc-item'>";
-    var imgTitle = image.title.length ? "<div>" + "<b class='art-gal-desc-item-title'>Title: </b>" + "<span>" + image.title + "</span>" + "</div>" : "<div />";
-    var imgCaption = image.caption.length ? "<div>" + "<b class='art-gal-desc-item-title'>Medium: </b>" + "<span>" + image.caption + "</span>" + "</div>" : "<div />";
-    var imgDesc = image.description.length ? "<div>" + "<b class='art-gal-desc-item-title'>Size: </b>" + "<span>" + image.description + "</span>" + "</div>" : "<div />";
-    item = item + imgTitle + imgCaption + imgDesc + "</div>";
+    var imgTitle = image.title.length ? "<div>" + "<span>" + image.title + "</span>" + "</div>" : "<div />";
+    var imgCaption = image.caption.length ? "<div>" + "<span class='art-gal-item-caption'>" + image.caption + "</span>" + "</div>" : "<div />";
+    item = item + imgTitle + imgCaption + "</div>";
     container += item;
   });
   container += "</div>";
@@ -161,6 +163,7 @@ function modal_build(artist){
   jQuery('.artist-email').html("<a href='mailto:" + artist_data['email_address'] + "'>" + artist_data['email_address'] + "</a>")
   jQuery('.artist-phone').html(artist_data['phone_number'])
   jQuery('.artist-statement').html(artist_data['artists_statement']);
+  jQuery('.artist-statement-header').html(artist_data['artist_statement_header']);
   jQuery('.artist-additional-header').html(artist_data['additional_information_header']);
   jQuery('.artist-additional').html(artist_data['additional_information']);
   jQuery('.artist-building').html(artist_data['building'])
@@ -169,12 +172,12 @@ function modal_build(artist){
   jQuery('.artist-state').html(artist_data['state'])
   jQuery('.artist-zip').html(artist_data['zip'])
   if (artist_data['hours'] && artist_data['hours'].length) {
-    jQuery('.artist-hours').html("<h4 class='artist-hours-header'>Hours</h4>" + "<div>" + artist_data['hours'] + "</div>")
+    jQuery('.artist-hours').html("<h4 class='artist-hours-header artist-header'>Hours</h4>" + "<div>" + artist_data['hours'] + "</div>")
   } else {
     jQuery('.artist-hours').html("")
   }
   if (artist_data['classes_offered'] && artist_data['classes_offered'].length) {
-    jQuery('.artist-classes-offered').html("<h4 class='artist-classes-header'>Classes Offered</h4>" + "<div>" + artist_data['classes_offered'] + "</div>")
+    jQuery('.artist-classes-offered').html("<h4 class='artist-classes-header artist-header'>General Classes Offered</h4>" + "<div>" + artist_data['classes_offered'] + "</div>")
   } else {
     jQuery('.artist-classes-offered').html("")
   }
@@ -184,12 +187,28 @@ function modal_build(artist){
     if (artist_data.image_gallery) {
       jQuery('.art-gal-description').html(buildDescGallery(artist_data.image_gallery));
       jQuery('.art-gal-dots').html(buildGalleryDots(artist_data.image_gallery.length));
+      jQuery('.art-gal-dots').show();
     } else {
       jQuery('.art-gal-description').html("<div />");
+      jQuery('.art-gal-dots').hide();
     }
     slide_show()
   } else {
     jQuery('.art-gal-itself').html("No Gallery Available");
+  }
+
+  if (artist_data['open_friday']) {
+    var openFriday = "<div><img src='/wp-content/plugins/artdirectory/assets/openfridayicon.png' /></div>"
+    jQuery('.open-friday').html(openFriday);
+  } else {
+    jQuery('.open-friday').html("");
+  }
+
+  if (artist_data['handicap_accessible']) {
+    var handicapAccessible = "<div><img src='/wp-content/plugins/artdirectory/assets/handicapicon.png' /></div>"
+    jQuery('.handicap-accessible').html(handicapAccessible);
+  } else {
+    jQuery('.handicap-accessible').html("");
   }
 
   social_media = ""
@@ -290,7 +309,7 @@ function build_artist(artist){
   data[artist[0]] = artist[1]
   data[artist[0]+"gallery"] = artist[2]
   build_artist_str = ""
-  build_artist_str += "<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12' style='text-align:left'><a data-toggle='modal' data-target='#artist' class='artist_post_content' onclick='modal_build("+ "&quot;" + artist[0] + "&quot;" + ")'>"
+  build_artist_str += "<div class='directory-item'><a data-toggle='modal' data-target='#artist' class='artist_post_content' onclick='modal_build("+ "&quot;" + artist[0] + "&quot;" + ")'>"
   if(artist[1]['thumb_nail_image'] && artist[1]['thumb_nail_image']['sizes']['medium']){
   build_artist_str += "<img src='" + artist[1]['thumb_nail_image']['sizes']['medium'] + "'/>"
   }

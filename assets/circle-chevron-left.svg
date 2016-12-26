@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>circle-chevron-left</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="circle-chevron-left" transform="translate(32.000000, 32.000000) scale(-1, 1) translate(-32.000000, -32.000000) translate(2.000000, 2.000000)">
+            <ellipse id="Circle" stroke="#905890" stroke-width="3" cx="30" cy="30" rx="30" ry="30"></ellipse>
+            <path d="M24.0769789,45 C23.5468304,45 23.0145544,44.8310165 22.6083845,44.4902977 C21.7972052,43.8114501 21.7972052,42.7128952 22.6083845,42.0340476 L36.9891204,30.0001214 L22.6083845,17.9653859 C21.7972052,17.2865382 21.7972052,16.1870122 22.6083845,15.5091357 C23.4195639,14.8302881 24.7334268,14.8302881 25.5444127,15.5091357 L41.3916155,28.7711061 C42.2027948,29.4499537 42.2027948,30.5494797 41.3916155,31.2273562 L25.5444127,44.4901359 C25.1395967,44.8300453 24.6082878,45 24.0769789,45 Z" id="Chevron" fill="#905890"></path>
+        </g>
+    </g>
+</svg>
